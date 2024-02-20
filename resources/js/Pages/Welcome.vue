@@ -50,9 +50,7 @@ const perks = [
               <div key={perk.name} className="text-center md:flex md:text-left lg:block lg:text-center">
                 <div className="md:flex-shrink-0 flex justify-center">
                   <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900">
-                    <div :v-html="perk.icon">
-
-                    </div>
+                    <Gem />
                   </div>
                 </div>
 
