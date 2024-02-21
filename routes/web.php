@@ -32,7 +32,8 @@ Route::get('/products', function () {
     return Inertia::render('Products/Products');
 });
 
-Route::get('/products/add', [ProductsController::class, 'index']);
+Route::get('/products/add', [ProductsController::class, 'index'])->name('products.index');
+Route::post('/products/add', [ProductsController::class, 'create'])->name('products.add');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

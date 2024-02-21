@@ -13,7 +13,7 @@ import Cart from '@/Components/Cart.vue';
             <LangButtons class="justify-start flex flex-grow pl-2" />
         
 
-            <div v-if="!$page.props.auth.user.id ? true : false">
+            <div v-if="!$page.props.auth ? true : false">
                 <PrimaryButton class="mt-1 mb-1 bg-transparent"><Link href="/login">{{$t('l.login')}}</Link></PrimaryButton>
                 <PrimaryButton class="mt-1 mb-1 bg-transparent"><Link href="/register">{{$t('l.register')}}</Link></PrimaryButton>
             </div>
