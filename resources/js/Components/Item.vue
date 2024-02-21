@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="text-center ">
+    <div class="text-center pt-4">
         <img :src="props.product?.imgSrc" class="pb-3"/>
         <span class="text-xl font-bold">
             {{ props.product?.price.toPrecision(2) }} PLN
@@ -17,5 +17,4 @@ const props = defineProps({
             {{ props.product?.name }}
         </h1>
     </div>
-
 </template>

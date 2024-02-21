@@ -20,10 +20,8 @@ import Cart from '@/Components/Cart.vue';
 
             <div v-else>
                 <span class="flex items-center space-x-2">
-                    <span>
-                        {{$t('hello') + ', ' + $page.props.auth.user.name }}
-                    </span>
                     <Cart />
+                    <PrimaryButton class=" bg-transparent"><Link href="/products/add">{{$t('l.create.listing')}}</Link></PrimaryButton>
                     <PrimaryButton class=" bg-transparent"><Link href="/logout">{{$t('l.logout')}}</Link></PrimaryButton>
                 </span>
             </div>

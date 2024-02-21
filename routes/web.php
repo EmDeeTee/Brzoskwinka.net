@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +29,10 @@ Route::get('/', function () {
 });
 
 Route::get('/products', function () {
-    return Inertia::render('Products');
+    return Inertia::render('Products/Products');
 });
+
+Route::get('/products/add', [ProductsController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

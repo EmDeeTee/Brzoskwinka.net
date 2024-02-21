@@ -11,16 +11,10 @@ const props = defineProps({
 </script>
 
 <template>
-
-
-    <div class="bg-white rounded-xl overflow-auto min-w-2 max-w-full">
+    <div class="bg-white rounded-xl min-w-2 max-w-full">
         <h1 class="p-2 font-bold text-2xl">{{props.title}}</h1>
-        <div class="min-w-64 flex flex-row flex-wrap">
-            <div class="space-x-4 m-3 flex justify-center">
-                <Item v-for="product in props.products" :product="product" />
-            </div>
+        <div class="space-x-4 flex-wrap flex flex-row justify-center">
+            <Item v-for="product in props.products" :product="product" />
         </div>
     </div>
-
-
 </template>
