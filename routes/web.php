@@ -24,8 +24,11 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
         'peachImg' => asset('storage/peach.webp'),
-        'isAuthed' => Auth::check()
     ]);
+});
+
+Route::get('/products', function () {
+    return Inertia::render('Products');
 });
 
 Route::get('/dashboard', function () {

@@ -11,12 +11,11 @@ const props = defineProps<{
     laravelVersion: string;
     phpVersion: string;
     peachImg: string;
-    isAuthed: any
 }>();
 </script>
 
 <template>
-  <GuestLayout :is-authed="props.isAuthed">
+  <GuestLayout>
     <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
       <img :src="props.peachImg" alt="peach" width=40 height=30 />
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl ">

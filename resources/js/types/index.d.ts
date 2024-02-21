@@ -10,3 +10,10 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
         user: User;
     };
 };
+
+export interface Product {
+    name: string,
+    price: number,
+    category: string,
+    imgSrc: string,
+}

@@ -3,5 +3,11 @@
     "lp.store.button": "Go shopping!",
 
     "l.login": "Login",
-    "l.register": "Register"
+    "l.logout": "Logout",
+    "l.register": "Register",
+
+    "hello": "Hello",
+    "laptops": "Laptops",
+    "pcs": "PCs",
+    "monitors": "Monitors"
 }

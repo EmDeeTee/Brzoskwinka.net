@@ -3,5 +3,11 @@
     "lp.store.button": "Zajrzyj do sklepu",
 
     "l.login": "Logowanie",
-    "l.register": "Rejestracja"
+    "l.logout": "Wyloguj",
+    "l.register": "Rejestracja",
+
+    "hello": "Witaj",
+    "laptops": "Laptopy",
+    "pcs": "Kąkutery",
+    "monitors": "Monitory"
 }

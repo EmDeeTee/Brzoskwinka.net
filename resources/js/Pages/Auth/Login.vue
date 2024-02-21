@@ -35,7 +35,7 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="mx-auto items-center justify-center flex flex-col h-screen">
             <div>
                 <InputLabel for="email" value="Email" />
 
@@ -74,7 +74,7 @@ const submit = () => {
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex flex-col items-center justify-end mt-4 space-y-2">
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
@@ -83,7 +83,7 @@ const submit = () => {
                     Forgot your password?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
                 </PrimaryButton>
             </div>
