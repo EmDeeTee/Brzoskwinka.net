@@ -8,25 +8,22 @@ const laptops:Product[] = [
         name: "Dell Inspiron 1525",
         price: 50,
         category: "laptops",
-        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg"
+        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
+        id: 0
     },
     {
-        name: "Dell Inspiron 1526",
+        name: "Dell Inspiron 1525",
         price: 50,
         category: "laptops",
-        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg"
+        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
+        id: 1
     },
     {
-        name: "Dell Inspiron 1527",
+        name: "Dell Inspiron 1525",
         price: 50,
         category: "laptops",
-        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg"
-    },
-    {
-        name: "Dell Inspiron 1527",
-        price: 50,
-        category: "laptops",
-        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg"
+        imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
+        id: 2
     },
 ]
 </script>

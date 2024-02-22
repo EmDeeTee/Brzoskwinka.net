@@ -21,4 +21,10 @@ class ProductsController extends Controller {
         
         Product::create($data);
     }
+
+    public function display() {
+        return Inertia::render('Products/Display', [
+            'product' => request()->id
+        ]);
+    }
 }

@@ -21,6 +21,6 @@ function changeLang() {
 
 <template>
     <div>
-        <button @click="changeLang()" class="items-center  font-semibold text-xs text-white uppercase  hover:ml-1  transition ease-in-out duration-150">{{ lang }}</button>
+        <button @click="changeLang()" class="items-center  font-semibold text-xs uppercase  hover:ml-1  transition ease-in-out duration-150">{{ lang }}</button>
     </div>
 </template>

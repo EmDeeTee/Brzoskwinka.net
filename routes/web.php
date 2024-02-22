@@ -28,11 +28,13 @@ Route::get('/', function () {
     ]);
 });
 
+
+Route::get('/products/add', [ProductsController::class, 'index'])->name('products.index');
+Route::get('/products/{id}', [ProductsController::class, 'display'])->name('products.display');
 Route::get('/products', function () {
     return Inertia::render('Products/Products');
 });
 
-Route::get('/products/add', [ProductsController::class, 'index'])->name('products.index');
 Route::post('/products/add', [ProductsController::class, 'create'])->name('products.add');
 
 Route::get('/dashboard', function () {

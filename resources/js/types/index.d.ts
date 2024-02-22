@@ -16,4 +16,5 @@ export interface Product {
     price: number,
     category: string,
     imgSrc: string,
+    id: number
 }
