@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import Register from './Register.vue';
 
 defineProps<{
     canResetPassword?: boolean;
@@ -88,5 +89,6 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
+
     </GuestLayout>
 </template>
