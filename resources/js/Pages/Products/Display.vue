@@ -13,7 +13,8 @@ const props = defineProps({
     <GuestLayout>
         <div class="py-10">
             <h1>PRODUCT ID: {{ props.product?.id }}</h1>
-
+            <h1>PRODUCT NAME: {{ props.product?.name }}</h1>
+            <h1>PRODUCT PRICE: {{ props.product?.price }}</h1>
         </div>
     </GuestLayout>
 </template>

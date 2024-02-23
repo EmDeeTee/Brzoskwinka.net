@@ -24,7 +24,14 @@ class ProductsController extends Controller {
 
     public function display() {
         return Inertia::render('Products/Display', [
-            'product' => request()->id
+            'product' => Product::firstWhere('id', request()->id)
+        ]);
+    }
+
+    // not this kind of store
+    public function store() {
+        return Inertia::render('Products/Products', [
+            'products' => Product::all()
         ]);
     }
 }
