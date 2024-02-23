@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
 
 class ProductsController extends Controller {
     public function index() {
@@ -16,7 +17,8 @@ class ProductsController extends Controller {
         $data = request()->validate([
             "name" => "required",
             "price" => "required",
-            "imageSrc" => "required"
+            "imageSrc" => "required",
+            'canLogin' => Route::has('login')
         ]);
         
         Product::create($data);
@@ -24,14 +26,16 @@ class ProductsController extends Controller {
 
     public function display() {
         return Inertia::render('Products/Display', [
-            'product' => Product::firstWhere('id', request()->id)
+            'product' => Product::firstWhere('id', request()->id),
+            'canLogin' => Route::has('login'),
         ]);
     }
 
     // not this kind of store
     public function store() {
         return Inertia::render('Products/Products', [
-            'products' => Product::all()
+            'products' => Product::all(),
+            'canLogin' => Route::has('login'),
         ]);
     }
 }

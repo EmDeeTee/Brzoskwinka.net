@@ -5,7 +5,6 @@ import LangButtons from '@/Components/LangButtons.vue';
 import Cart from '@/Components/Cart.vue';
 import { LogOut, PlusCircle } from 'lucide-vue-next';
 
-
 </script>
 
 <template>
@@ -14,11 +13,10 @@ import { LogOut, PlusCircle } from 'lucide-vue-next';
             <LangButtons class="justify-start flex flex-grow pl-2 text-black" />
         
 
-            <div v-if="!$page.props.auth ? true : false">
-                <PrimaryButton class="mt-1 mb-1 bg-transparent"><Link href="/login">{{$t('l.login')}}</Link></PrimaryButton>
-                <PrimaryButton class="mt-1 mb-1 bg-transparent"><Link href="/register">{{$t('l.register')}}</Link></PrimaryButton>
+            <div v-if="$page.props.auth.user === null" class="items-center flex space-x-4">
+                <PrimaryButton><Link href="/login">{{$t('l.login')}}</Link></PrimaryButton>
+                <PrimaryButton class=""><Link href="/register">{{$t('l.register')}}</Link></PrimaryButton>
             </div>
-
             <span v-else class="flex items-center space-x-10">
                 <Cart />
                 <!-- <PrimaryButton class=" bg-transparent"><Link href="/products/add">{{$t('l.create.listing')}}</Link></PrimaryButton> -->
