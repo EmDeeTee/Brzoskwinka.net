@@ -29,6 +29,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @property int $user_id
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUserId($value)
+ * @property int $units
+ * @property string $category
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereUnits($value)
  * @mixin \Eloquent
  */
 class Product extends Model {

@@ -4,6 +4,10 @@ import type { Product } from '@/types/index'
 import { ShoppingCart, Truck } from 'lucide-vue-next';
 import type { PropType } from 'vue'
 import { Link } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3'
+import axios from 'axios';
+
+const page = usePage()
 
 interface Seller {
     id: Number,
@@ -14,6 +18,18 @@ const props = defineProps({
     product: Object as PropType<Product>,
     seller: Object as PropType<Seller>
 })
+
+function addToCart(product_id: number) {
+    axios.post('/cart/add', {
+        'cart_id': page.props.auth.cart.id,
+        'cart_user_id': page.props.auth.cart.user_id,
+        'product_id': product_id
+    })
+    .then(function (res) {
+        console.log(res);
+        page.props.auth.cart.product_ids.push(product_id)
+    })
+}
 
 </script>
 
@@ -73,7 +89,7 @@ const props = defineProps({
                     </p>
                 </div>
                 <div class="flex items-center mx-auto ">
-                    <button class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">{{$t('d.add.to.cart')}}</button>
+                    <button @click="addToCart(props.product?.id)" class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">{{$t('d.add.to.cart')}}</button>
                 </div>
             </div>
 

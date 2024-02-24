@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Models\User
@@ -38,6 +39,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
+ * @property-read \App\Models\Cart|null $cart
  * @mixin \Eloquent
  */
 class User extends Authenticatable
@@ -77,5 +79,9 @@ class User extends Authenticatable
 
     public function products(): HasMany {
         return $this->hasMany(Product::class);
+    }
+
+    public function cart(): HasOne {
+        return $this->hasOne(Cart::class);
     }
 }
