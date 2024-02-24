@@ -9,5 +9,12 @@
     "hello": "Hello",
     "laptops": "Laptops",
     "pcs": "PCs",
-    "monitors": "Monitors"
+    "monitors": "Monitors",
+
+    "d.add.to.cart": "Add to cart",
+    "d.seller": "Seller",
+    "d.available": "available",
+    "d.unit": "unit",
+    "d.units": "units"
+
 }

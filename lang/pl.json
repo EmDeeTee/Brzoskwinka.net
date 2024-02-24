@@ -9,5 +9,11 @@
     "hello": "Witaj",
     "laptops": "Laptopy",
     "pcs": "Kąkutery",
-    "monitors": "Monitory"
+    "monitors": "Monitory",
+
+    "d.add.to.cart": "Dodaj do koszyka",
+    "d.seller": "Sprzedający",
+    "d.available": "dostępne",
+    "d.unit": "sztuka",
+    "d.units": "sztuk"
 }
