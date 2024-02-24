@@ -16,18 +16,25 @@ class ProductsController extends Controller {
     public function create() {
         $data = request()->validate([
             "name" => "required",
-            "price" => "required",
-            "imageSrc" => "required",
-            'canLogin' => Route::has('login')
+            "description" => "required",
+            "price" => "required|min:1|numeric|sometimes",
+            "imgSrc" => "required",
+            "units" => "required|min:1|numeric|sometimes",
+            "category" => "required"
         ]);
-        
-        Product::create($data);
+
+        $p = Product::create(array_merge($data, [
+            "user_id" => request()->user()->id
+        ]));
+
+        return Redirect::to('/products/'.$p->id);
     }
 
     public function display() {
+        $p = Product::firstWhere('id', request()->id);
         return Inertia::render('Products/Display', [
-            'product' => Product::firstWhere('id', request()->id),
-            'canLogin' => Route::has('login'),
+            'product' => $p,
+            'seller' => $p->user()->get(['id', 'name'])->first()
         ]);
     }
 
@@ -35,7 +42,6 @@ class ProductsController extends Controller {
     public function store() {
         return Inertia::render('Products/Products', [
             'products' => Product::all(),
-            'canLogin' => Route::has('login'),
         ]);
     }
 }

@@ -4,8 +4,14 @@ import type { Product } from '@/types/index'
 import { ShoppingCart, Truck } from 'lucide-vue-next';
 import type { PropType } from 'vue'
 
+interface Seller {
+    id: Number,
+    name: String
+}
+
 const props = defineProps({
-    product: Object as PropType<Product>
+    product: Object as PropType<Product>,
+    seller: Object as PropType<Seller>
 })
 
 </script>
@@ -36,13 +42,13 @@ const props = defineProps({
             <div class="w-1/3 m-2 flex flex-col rounded-xl bg-white max-h-[22rem] md:max-h-[15rem]">
                 <div class="m-2">
                     <span class="font-light">Seller: </span>
-                    <span class="font-semibold">Brzoskwinka.Net</span>
+                    <span class="font-semibold">{{ props.seller === null ? "Brzoskwinka.Net" : props.seller?.name }} </span>
                 </div>
 
                 <div class="border-t border-b font-bold p-3 md:flex">
                     <div>
                         <h1 class="text-3xl">{{ props.product?.price }} PLN</h1>
-                        <p class="font-light">1 units available</p>
+                        <p class="font-light">{{ props.product?.units }} {{ props.product?.units == 1 ? "unit" : "units" }} available</p>
                     </div>
                     <div class="flex items-center mx-auto ">
                         <button class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">Add to cart</button>

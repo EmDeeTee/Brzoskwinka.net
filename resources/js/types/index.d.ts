@@ -14,7 +14,10 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
 export interface Product {
     name: string,
     price: number,
-    //category: string,
+    description: string,
+    user_id: number,
+    units: number,
+    category: string,
     imgSrc: string,
     id: number
 }

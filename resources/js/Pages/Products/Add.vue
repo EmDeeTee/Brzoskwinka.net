@@ -5,17 +5,27 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { useToast, POSITION, TYPE} from "vue-toastification";
 
 const form = useForm({
     name: '',
+    description: '',
     price: 1,
-    imageSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg" // NOTE: For now, users can only point to an image from the Internet
+    units: 1,
+    category: 'laptops',
+    imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg" // NOTE: For now, users can only point to an image from the Internet
 });
 
 const submit = () => {
     form.post(route('products.add'), {
-        onFinish: () => {
-            console.log("FORM UPLOADED")
+        onSuccess: () => {
+            const toast = useToast();
+
+            // Use it!
+            toast("Listing created!", {
+                position: POSITION.BOTTOM_CENTER,
+                type: TYPE.SUCCESS
+            });
         },
     });
 };
@@ -42,6 +52,22 @@ const submit = () => {
             </div>
 
             <div>
+                <InputLabel for="description" value="Description" />
+
+                <TextInput
+                    id="description"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.description"
+                    required
+                    autofocus
+                    autocomplete="description"
+                />
+
+                <InputError class="mt-2" :message="form.errors.description" />
+            </div>
+
+            <div>
                 <InputLabel for="price" value="Price (PLN)" />
 
                 <TextInput
@@ -57,13 +83,28 @@ const submit = () => {
             </div>
 
             <div>
-                <InputLabel for="imageSrc" value="Image URL" />
+                <InputLabel for="units" value="Units" />
 
                 <TextInput
-                    id="imageSrc"
+                    id="units"
+                    type="number"
+                    class="mt-1 block w-full"
+                    v-model.number="form.units"
+                    required
+                    autofocus
+                />
+
+                <InputError class="mt-2" :message="form.errors.units" />
+            </div>
+
+            <div>
+                <InputLabel for="imgSrc" value="Image URL" />
+
+                <TextInput
+                    id="imgSrc"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.imageSrc"
+                    v-model="form.imgSrc"
                     required
                     autofocus
                 />

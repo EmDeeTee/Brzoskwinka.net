@@ -13,7 +13,7 @@ const props = defineProps({
         <Link :href="route('products.display', {id: product?.id})">
             <img :src="props.product?.imgSrc" class="pb-3"/>
             <span class="text-xl font-bold">
-                {{ props.product?.price.toPrecision(2) }} PLN
+                {{ props.product?.price }} PLN
             </span>
             <h1 class="m-0 p-0">
                 {{ props.product?.name }}

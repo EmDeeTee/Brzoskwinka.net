@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "laravel-vue-i18n": "^2.7.6",
-        "lucide-vue-next": "^0.335.0"
+        "lucide-vue-next": "^0.335.0",
+        "vue-toastification": "^2.0.0-rc.5"
     }
 }

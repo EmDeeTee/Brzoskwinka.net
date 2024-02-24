@@ -13,17 +13,29 @@ class ProductSeeder extends Seeder {
         DB::table('products')->insert([
         'name' => Str::random(10),
         'price' => random_int(10, 112),
-        'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg"
+        'description' => 'Dell desc',
+        'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
+        'user_id' => -1,
+        "category" => "laptops",
+        "units" => random_int(1, 6)
         ]);
         DB::table('products')->insert([
         'name' => Str::random(10),
         'price' => random_int(10, 112),
-        'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg"
+        'description' => 'Dell desc',
+        'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
+        'user_id' => -1,
+        "category" => "laptops",
+        "units" => random_int(1, 6),
         ]);
         DB::table('products')->insert([
         'name' => Str::random(10),
         'price' => random_int(10, 112),
-        'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg"
+        'description' => 'Dell desc',
+        'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
+        'user_id' => -1,
+        "category" => "laptops",
+        "units" => random_int(1, 6)
         ]);
         
         //Product::factory()->count(10)->create();

@@ -15,7 +15,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <GuestLayout>
+  
     <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
       <img :src="props.peachImg" alt="peach" width=40 height=30 />
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl ">
@@ -26,6 +26,11 @@ const props = defineProps<{
         <Link href='/products' class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">{{$t('lp.store.button')}}</Link>
       </div>
     </div>
-  </GuestLayout>
+  
 </template>
 
+<script lang="ts">
+export default {
+  layout: GuestLayout
+}
+</script>
