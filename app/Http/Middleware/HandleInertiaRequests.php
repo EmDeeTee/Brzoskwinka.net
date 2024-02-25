@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Auth;
 
+use function PHPUnit\Framework\isInstanceOf;
+
 class HandleInertiaRequests extends Middleware
 {
     /**
@@ -25,6 +27,14 @@ class HandleInertiaRequests extends Middleware
         return parent::version($request);
     }
 
+    private function getCartIfAvailable(User|null $u) {
+        if ($u) {
+            return Cart::firstWhere(['user_id' => Request()->user()->id]);
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Define the props that are shared by default.
      *
@@ -36,7 +46,7 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
-                'cart' => Cart::firstWhere(['user_id' => $request->user()->id])
+                'cart' => $this->getCartIfAvailable($request->user())
             ]
         ];
     }

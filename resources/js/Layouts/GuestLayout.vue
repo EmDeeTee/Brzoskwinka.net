@@ -14,7 +14,7 @@ import { Head } from '@inertiajs/vue3';
         <title>Brzoskwinka.Net</title>
     </Head>
     <div>
-        <div class="fixed w-full h-12 text-black space-x-4 justify-end flex border-b-2 " style="background-color: #fff;">
+        <div class="fixed w-full h-12 text-black space-x-4 justify-end flex border-b-2 bg-white" >
             <LangButtons class="justify-start flex flex-grow pl-2 text-black" />
         
             <div class="scale-125 items-center flex space-x-4 pr-3">

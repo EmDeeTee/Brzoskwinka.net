@@ -6,6 +6,7 @@ import type { PropType } from 'vue'
 import { Link } from '@inertiajs/vue3';
 import { usePage } from '@inertiajs/vue3'
 import axios from 'axios';
+import { POSITION, TYPE, useToast } from 'vue-toastification';
 
 const page = usePage()
 
@@ -28,6 +29,15 @@ function addToCart(product_id: number) {
     .then(function (res) {
         console.log(res);
         page.props.auth.cart.product_ids.push(product_id)
+    }).catch(function (err) {
+        if (err.response.status == 418) {
+            const toast = useToast();
+
+            toast("You already have this item in your cart", {
+                position: POSITION.BOTTOM_CENTER,
+                type: TYPE.INFO
+            });
+        }
     })
 }
 
