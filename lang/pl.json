@@ -12,8 +12,13 @@
     "monitors": "Monitory",
 
     "d.add.to.cart": "Dodaj do koszyka",
+    "d.added.to.cart": "Dodano do koszyka",
     "d.seller": "Sprzedający",
     "d.available": "dostępne",
     "d.unit": "sztuka",
-    "d.units": "sztuk"
+    "d.units": "sztuk",
+
+    "cart.your.cart" : "Twój koszyk",
+    "cart.checkout" : "Do kasy",
+    "cart.total" : "Razem"
 }

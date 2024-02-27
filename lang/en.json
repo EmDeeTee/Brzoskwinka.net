@@ -12,9 +12,14 @@
     "monitors": "Monitors",
 
     "d.add.to.cart": "Add to cart",
+    "d.added.to.cart": "Added to cart",
     "d.seller": "Seller",
     "d.available": "available",
     "d.unit": "unit",
-    "d.units": "units"
+    "d.units": "units",
+
+    "cart.your.cart" : "Your cart",
+    "cart.checkout" : "Checkout",
+    "cart.total" : "Total"
 
 }

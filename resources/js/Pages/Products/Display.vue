@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import type { Product } from '@/types/index'
-import { ShoppingCart, Truck } from 'lucide-vue-next';
-import type { PropType } from 'vue'
+import { Check, ShoppingCart, Truck } from 'lucide-vue-next';
+import { ref, type PropType } from 'vue'
 import { Link } from '@inertiajs/vue3';
 import { usePage } from '@inertiajs/vue3'
 import axios from 'axios';
 import { POSITION, TYPE, useToast } from 'vue-toastification';
 
 const page = usePage()
+const addedToCart = ref(false)
 
 interface Seller {
     id: Number,
@@ -99,7 +100,19 @@ function addToCart(product_id: number) {
                     </p>
                 </div>
                 <div class="flex items-center mx-auto ">
-                    <button @click="addToCart(props.product?.id)" class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">{{$t('d.add.to.cart')}}</button>
+                    <button @click="addToCart(props.product?.id); addedToCart = true" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">
+                        <span class="flex" v-if="addedToCart">
+                            <div>
+                                {{ $t('d.added.to.cart') }}
+                            </div>
+                            <div class="mx-auto">
+                                <Check />
+                            </div>
+                        </span>
+                        <span v-else>
+                            {{$t('d.add.to.cart')}}
+                        </span>
+                    </button>
                 </div>
             </div>
 

@@ -17,7 +17,8 @@ function removeItem(id: number) {
         'cart_user_id': page.props.auth.cart.user_id,
         'product_id': props.product?.id
     }).then(function (res) {
-        console.log(res);
+        // NOTE: Refreshing the page every time you delete something is kinda meh
+        location.reload()
     })
 }
 
@@ -35,7 +36,7 @@ function removeItem(id: number) {
             </div>
         </Link>
         <div class="relative">
-            <button @click="removeItem(props.product?.id!)" class=""><Trash /></button>
+            <button @click="removeItem(props.product?.id!)"><Trash /></button>
         </div>
     </div>
 </template>

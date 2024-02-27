@@ -46,7 +46,13 @@ class CartController extends Controller {
         
         // Owns the cart
         if ($r_cart_user_id == $r_user_id) {
-            return "yes";
+            $cart = Cart::find(request()->user()->cart->id);
+            $pids = $cart->product_ids;
+            if (($key = array_search($r_product_id, $pids)) !== false) {
+                unset($pids[$key]);
+            }
+            $cart->update(['product_ids' => $pids]); 
+            return response(status: 200);
         } else {
             return response(status: 403);
         }
