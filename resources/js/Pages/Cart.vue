@@ -2,6 +2,7 @@
 import CartProduct from '@/Components/CartProduct.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Product } from '@/types';
+import { ref } from 'vue';
 import { PropType } from 'vue';
 
 const props = defineProps({
@@ -20,7 +21,7 @@ props.products!.forEach(element => {
     <div class="py-16 flex flex-row">
         <div class="w-3/4 m-2 rounded-xl bg-white">
             <h1 class="p-4 border-b font-bold text-2xl">{{$t('cart.your.cart')}} ({{ $page.props.auth.cart.product_ids.length }})</h1>
-            <CartProduct v-for="product in props.products" :product="product" />
+            <CartProduct v-for="product in products" :product="product" />
         </div>
         <div>
             <div class="w-full m-2 rounded-xl bg-white p-12 space-y-4">

@@ -42,6 +42,10 @@ function addToCart(product_id: number) {
     })
 }
 
+if (page.props.auth.cart.product_ids.includes(props.product?.id!)) {
+    addedToCart.value = true
+}
+
 </script>
 
 <template>

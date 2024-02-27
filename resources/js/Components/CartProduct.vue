@@ -8,8 +8,10 @@ import axios from 'axios';
 const page = usePage()
 
 const props = defineProps({
-    product: Object as PropType<Product>
+    product: Object as PropType<Product>,
 })
+
+props.product
 
 function removeItem(id: number) {
     axios.post('/cart/delete', {

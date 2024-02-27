@@ -28,8 +28,8 @@ import { Head } from '@inertiajs/vue3';
                     <!-- <PrimaryButton class=" bg-transparent"><Link href="/products/add">{{$t('l.create.listing')}}</Link></PrimaryButton> -->
                     <!-- <PrimaryButton class=" bg-transparent"><Link href="/logout">{{$t('l.logout')}}</Link></PrimaryButton> -->
                     <Link href="/products/add"><PlusCircle class="hover:stroke-gray-400" /></Link>
+                    <Link href="/profile"><UserRound /></Link>
                     <Link href="/logout" class="pr-10"><LogOut class="hover:stroke-gray-400" /></Link>
-                    
                 </div>
             </div>
         </div>

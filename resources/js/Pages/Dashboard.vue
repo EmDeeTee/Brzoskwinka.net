@@ -14,7 +14,10 @@ import { Head } from '@inertiajs/vue3';
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
+                    <h1 class="p-4 border-b text-2xl font-bold">Your listings</h1>
+                    <div class="p-6 text-gray-900">
+                        {{ $page.props.auth.user.id }}
+                    </div>
                 </div>
             </div>
         </div>
