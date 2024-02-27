@@ -23,8 +23,8 @@ const props = defineProps({
 })
 
 function addToCart(product_id: number) {
-    if (page.props.auth.user !== null && page.props.auth.user.id === page.props.auth.user.id) {
-        toast("You cant add your own items to cart", {
+    if (page.props.auth.user !== null && page.props.auth.user.id === props.seller?.id) {
+        toast("You can't add your own items to cart", {
             position: POSITION.BOTTOM_CENTER,
             type: TYPE.INFO
         });
