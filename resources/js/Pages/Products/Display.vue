@@ -3,7 +3,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 import type { Product } from '@/types/index'
 import { Check, ShoppingCart, Truck } from 'lucide-vue-next';
 import { ref, type PropType } from 'vue'
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import { usePage } from '@inertiajs/vue3'
 import axios from 'axios';
 import { POSITION, TYPE, useToast } from 'vue-toastification';
@@ -30,6 +30,14 @@ function addToCart(product_id: number) {
         });
         return
     }
+    if (page.props.auth.user === null) {
+        toast("You have to log in to do this", {
+            position: POSITION.BOTTOM_CENTER,
+            type: TYPE.ERROR
+        });
+        router.get('/login')
+        return
+    }
     axios.post('/cart/add', {
         'cart_id': page.props.auth.cart.id,
         'cart_user_id': page.props.auth.cart.user_id,
@@ -49,7 +57,7 @@ function addToCart(product_id: number) {
     })
 }
 
-if (page.props.auth.cart.product_ids.includes(props.product?.id!)) {
+if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(props.product?.id!)) {
     addedToCart.value = true
 }
 
@@ -112,11 +120,11 @@ if (page.props.auth.cart.product_ids.includes(props.product?.id!)) {
                 </div>
                 <div class="flex items-center mx-auto ">
                     <button @click="addToCart(props.product?.id)" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">
-                        <span class="flex" v-if="addedToCart">
+                        <span class="flex flex-row" v-if="addedToCart">
                             <div>
                                 {{ $t('d.added.to.cart') }}
                             </div>
-                            <div class="mx-auto">
+                            <div class="">
                                 <Check />
                             </div>
                         </span>
