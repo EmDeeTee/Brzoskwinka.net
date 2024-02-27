@@ -10,6 +10,7 @@ import { POSITION, TYPE, useToast } from 'vue-toastification';
 
 const page = usePage()
 const addedToCart = ref(false)
+const toast = useToast();
 
 interface Seller {
     id: Number,
@@ -22,6 +23,13 @@ const props = defineProps({
 })
 
 function addToCart(product_id: number) {
+    if (page.props.auth.user !== null && page.props.auth.user.id === page.props.auth.user.id) {
+        toast("You cant add your own items to cart", {
+            position: POSITION.BOTTOM_CENTER,
+            type: TYPE.INFO
+        });
+        return
+    }
     axios.post('/cart/add', {
         'cart_id': page.props.auth.cart.id,
         'cart_user_id': page.props.auth.cart.user_id,
@@ -30,10 +38,9 @@ function addToCart(product_id: number) {
     .then(function (res) {
         console.log(res);
         page.props.auth.cart.product_ids.push(product_id)
+        addedToCart.value = true
     }).catch(function (err) {
         if (err.response.status == 418) {
-            const toast = useToast();
-
             toast("You already have this item in your cart", {
                 position: POSITION.BOTTOM_CENTER,
                 type: TYPE.INFO
@@ -104,7 +111,7 @@ if (page.props.auth.cart.product_ids.includes(props.product?.id!)) {
                     </p>
                 </div>
                 <div class="flex items-center mx-auto ">
-                    <button @click="addToCart(props.product?.id); addedToCart = true" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">
+                    <button @click="addToCart(props.product?.id)" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">
                         <span class="flex" v-if="addedToCart">
                             <div>
                                 {{ $t('d.added.to.cart') }}

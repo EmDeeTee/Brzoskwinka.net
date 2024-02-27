@@ -37,7 +37,9 @@ Route::get('/products', [ProductsController::class, 'store'])->name('products');
 Route::post('/products/add', [ProductsController::class, 'create'])->name('products.add');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        "listings" => Auth::user()->products()->get(['name', 'id', 'imgSrc'])
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
