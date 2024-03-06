@@ -11,16 +11,16 @@ import { POSITION, TYPE, useToast } from 'vue-toastification';
 const page = usePage()
 const addedToCart = ref(false)
 const toast = useToast();
-
+// TODO: Show if the listing is posted by brzoskwinka or user
 interface Seller {
     id: Number,
     name: String
 }
 
-const props = defineProps({
-    product: Object as PropType<Product>,
-    seller: Object as PropType<Seller>
-})
+const props = defineProps<{
+    product: Product,
+    seller: Seller
+}>()
 
 function addToCart(product_id: number) {
     if (page.props.auth.user !== null && page.props.auth.user.id === props.seller?.id) {

@@ -8,6 +8,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { useToast, POSITION, TYPE} from "vue-toastification";
 import { ref } from 'vue';
 
+const toast = useToast();
 const form = useForm({
     name: '',
     description: '',
@@ -20,9 +21,6 @@ const form = useForm({
 const submit = () => {
     form.post(route('products.add'), {
         onSuccess: () => {
-            const toast = useToast();
-
-            // Use it!
             toast("Listing created!", {
                 position: POSITION.BOTTOM_CENTER,
                 type: TYPE.SUCCESS
