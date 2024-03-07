@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
     <div class="bg-white rounded-xl max-w-full">
         <h1 class="p-2 font-bold text-2xl">{{props.title}}</h1>
-        <div class="space-x-4 flex-wrap flex flex-row justify-center">
+        <div class="space-x-4 flex-wrap flex flex-row justify-center ml-1 mr-1">
             <Item :key="product.id" v-for="product in props.products" :product="product" />
         </div>
     </div>

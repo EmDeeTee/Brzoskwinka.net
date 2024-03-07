@@ -19,7 +19,7 @@ function removeItem(id: number) {
         'cart_user_id': page.props.auth.cart.user_id,
         'product_id': props.product?.id
     }).then(function (res) {
-        // NOTE: Refreshing the page every time you delete something is kinda meh
+        // TODO: Refreshing the page every time you delete something is kinda meh
         location.reload()
     })
 }
@@ -30,15 +30,17 @@ function removeItem(id: number) {
     <div class="p-4 flex flex-row items-center justify-between hover:bg-gray-200">
         <Link :href="'products/' + props.product?.id!">
             <div class="hover:underline flex items-center">
-                <img :src="props.product?.imgSrc"/>
+                <img :src="props.product?.imgSrc" class="w-48 h-48"/> 
                 <div class="px-4">
                     <h1 class="font-bold text-xl">{{ props.product?.name }}</h1>
-                    <h1 class="">{{ props.product?.price }} PLN</h1>
+                    <h1>{{ props.product?.price }} PLN</h1>
                 </div>
             </div>
         </Link>
         <div class="relative">
-            <button @click="removeItem(props.product?.id!)"><Trash /></button>
+            <button @click="removeItem(props.product?.id!)">
+                <Trash class="hover:scale-125 hover:rotate-12 transition" />
+            </button>
         </div>
     </div>
 </template>

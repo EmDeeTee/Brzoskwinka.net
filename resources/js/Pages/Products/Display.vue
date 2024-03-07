@@ -108,11 +108,11 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                 </div>
                 <div class="flex items-center w-2/3">
                     <button @click="addToCart(props.product?.id)" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-2 rounded-lg bg-[#ff503c] text-xl hover:opacity-70 w-full">
-                        <span class="flex flex-row space-x-2" v-if="addedToCart">
+                        <span class="flex flex-row" v-if="addedToCart">
                             <div>
                                 {{ $t('d.added.to.cart') }}
                             </div>
-                            <div class="mt-auto mb-auto">
+                            <div class="mt-auto mb-auto ml-auto mr-1">
                                 <Check />
                             </div>
                         </span>

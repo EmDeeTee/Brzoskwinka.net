@@ -25,7 +25,7 @@ import { Head } from '@inertiajs/vue3';
                     <Cart triggers="['hover']" v-tooltip="'See your cart'" />
                     <Link triggers="['hover']" v-tooltip="'See the shop'" href="/products"><Store class="hover:stroke-gray-400" /></Link>
                     <Link triggers="['hover']" v-tooltip="'Add a new public listing'" href="/products/add"><PlusCircle class="hover:stroke-gray-400" /></Link>
-                    <Link triggers="['hover']" v-tooltip="'Dahsboard'" href="/dashboard"><UserRound class="hover:stroke-gray-400" /></Link>
+                    <Link triggers="['hover']" v-tooltip="'Dashboard'" href="/dashboard"><UserRound class="hover:stroke-gray-400" /></Link>
                     <Link triggers="['hover']" v-tooltip="'Logout'" href="/logout" class="pr-10"><LogOut class="hover:stroke-gray-400" /></Link>
                 </div>
             </div>

@@ -18,14 +18,22 @@ props.products!.forEach(element => {
 </script>
 
 <template>
-    <div class="py-16 flex flex-row">
-        <div class="w-3/4 m-2 rounded-xl bg-white">
-            <h1 class="p-4 border-b font-bold text-2xl">{{$t('cart.your.cart')}} ({{ $page.props.auth.cart.product_ids.length }})</h1>
-            <CartProduct v-for="product in products" :product="product" />
+    <div class="py-16 flex flex-col md:flex-row">
+        <div class="m-2 rounded-xl bg-white md:w-3/4">
+            <h1 class="p-4 border-b font-bold text-2xl">
+                {{$t('cart.your.cart')}} ({{ $page.props.auth.cart.product_ids.length }})
+            </h1>
+            <div class="">
+                <CartProduct v-for="product in products" :product="product" />
+            </div>
         </div>
-        <div class="w-1/4">
+        <div class="md:w-1/4">
             <div class="m-2 min-w-64 rounded-xl bg-white p-12 space-y-4">
-                <button class="w-full p-2 mx-auto bg-[#ff503c] rounded-xl text-white">{{ $t('cart.checkout') }}</button>
+                <button class="w-full p-2 mx-auto bg-[#ff503c] rounded-xl text-white hover:opacity-70 transition">
+                    <p class="font-bold text-lg">
+                        {{ $t('cart.checkout') }}
+                    </p>
+                </button>
     
                 <div class="space-x-4">
                     <span class="font-bold">{{ $t('cart.total') }}: </span>
