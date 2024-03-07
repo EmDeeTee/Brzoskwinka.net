@@ -18,6 +18,9 @@
   <img src="./github-images/Capture.PNG" width="600" />
   
 - Responsive frontend design. Looks good on PC and mobile
+
+  <img src="./github-images/Capture4.PNG" />
+  
 - Image uploading and stylised listing description
 - Written in PHP, Laravel
 - Reactive Vue.js 3 frontend
