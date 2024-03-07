@@ -24,5 +24,10 @@ class UserSeeder extends Seeder
             'user_id' => 1,
             'product_ids' => []
         ]);
+
+        foreach (glob(public_path('images\\*')) as $file) {
+            $this->command->info("Deleting file: {$file}");
+            unlink($file);
+        }
     }
 }

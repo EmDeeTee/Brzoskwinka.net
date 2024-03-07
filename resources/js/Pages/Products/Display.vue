@@ -98,7 +98,7 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                 </span>
 
                 <span class="font-bold hover:underline" v-else> 
-                    <Link :href="'/users/' + props.seller?.id">
+                    <Link triggers="['hover']" v-tooltip="'Click to see all listings from this user'" :href="'/users/' + props.seller?.id">
                         {{ props.seller?.name }}
                     </Link>
                 </span>

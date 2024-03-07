@@ -20,6 +20,7 @@
         "vue-tsc": "^1.8.27"
     },
     "dependencies": {
+        "floating-vue": "^5.2.2",
         "laravel-vue-i18n": "^2.7.6",
         "lucide-vue-next": "^0.335.0",
         "vue-picture-input": "^3.0.1",

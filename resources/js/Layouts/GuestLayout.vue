@@ -22,11 +22,11 @@ import { Head } from '@inertiajs/vue3';
                     <Link href="/dashboard"><UserRound /></Link>
                 </div>
                 <div v-else class="flex items-center space-x-10">
-                    <Cart />
-                    <Link href="/products"><Store class="hover:stroke-gray-400" /></Link>
-                    <Link href="/products/add"><PlusCircle class="hover:stroke-gray-400" /></Link>
-                    <Link href="/dashboard"><UserRound class="hover:stroke-gray-400" /></Link>
-                    <Link href="/logout" class="pr-10"><LogOut class="hover:stroke-gray-400" /></Link>
+                    <Cart triggers="['hover']" v-tooltip="'See your cart'" />
+                    <Link triggers="['hover']" v-tooltip="'See the shop'" href="/products"><Store class="hover:stroke-gray-400" /></Link>
+                    <Link triggers="['hover']" v-tooltip="'Add a new public listing'" href="/products/add"><PlusCircle class="hover:stroke-gray-400" /></Link>
+                    <Link triggers="['hover']" v-tooltip="'Dahsboard'" href="/dashboard"><UserRound class="hover:stroke-gray-400" /></Link>
+                    <Link triggers="['hover']" v-tooltip="'Logout'" href="/logout" class="pr-10"><LogOut class="hover:stroke-gray-400" /></Link>
                 </div>
             </div>
         </div>
