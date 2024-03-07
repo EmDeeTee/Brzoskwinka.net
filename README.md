@@ -10,6 +10,9 @@
 # Brzoskwinka.Net
 - Multi-language support with i18n
 - Official and user-made listings
+  
+  <img src="./github-images/Capture.PNG" width="600" />
+  
 - Responsive frontend design. Looks good on PC and mobile
 - Image uploading and stylised listing description
 - Written in PHP, Laravel
