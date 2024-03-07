@@ -7,6 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import Register from './Register.vue';
+import axios from 'axios';
 
 defineProps<{
     canResetPassword?: boolean;
@@ -26,7 +27,9 @@ const submit = () => {
         },
     });
 };
+
 </script>
+
 
 <template>
     <GuestLayout>
@@ -37,9 +40,10 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit" class="mx-auto items-center justify-center flex flex-col h-screen">
+        
             <div>
                 <InputLabel for="email" value="Email" />
-
+                
                 <TextInput
                     id="email"
                     type="email"

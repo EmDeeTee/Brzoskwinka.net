@@ -7,7 +7,10 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useToast, POSITION, TYPE} from "vue-toastification";
 import { ref } from 'vue';
+import PictureInput from 'vue-picture-input'
 
+
+const imageInput = ref()
 const toast = useToast();
 const form = useForm({
     name: '',
@@ -15,7 +18,7 @@ const form = useForm({
     price: 1,
     units: 1,
     category: 'other',
-    imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg" // NOTE: For now, users can only point to an image from the Internet
+    imgSrc: null
 });
 
 const submit = () => {
@@ -28,6 +31,16 @@ const submit = () => {
         },
     });
 };
+
+function onImageChange(event) {
+    // TODO: Proper error handling
+    if (event) {
+        console.log(imageInput.value.file);
+        form.imgSrc = imageInput.value.file
+    } else {
+        console.log("error 'onImageChange - Add.vue'");
+    }
+}
 
 </script>
 <template>
@@ -109,27 +122,18 @@ const submit = () => {
         </div>
 
         <div>
-            <InputLabel for="imgSrc" value="Image URL" />
+            <InputLabel value="Image" />
 
-            <TextInput
-                id="imgSrc"
-                type="text"
-                class="mt-1 block w-full"
-                v-model="form.imgSrc"
-                required
-                autofocus
-            />
-
-            <InputError class="mt-2" :message="form.errors.imgSrc" />
+            <picture-input 
+                ref="imageInput"
+                width="600" 
+                height="600" 
+                accept="image/jpeg,image/png" 
+                @change="onImageChange">
+            </picture-input>
         </div>
 
         <div class="flex flex-col justify-center items-center mt-4 space-y-2">
-            <Link
-                :href="route('login')"
-                class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-                Already registered?
-            </Link>
 
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 ADD

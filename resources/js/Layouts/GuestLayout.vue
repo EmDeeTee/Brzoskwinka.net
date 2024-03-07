@@ -18,7 +18,7 @@ import { Head } from '@inertiajs/vue3';
             <LangButtons class="justify-start flex flex-grow pl-2 text-black" />
             
             <div class="scale-125 items-center flex space-x-4 pr-3">
-                <div v-if="$page.props.auth.user === null" class=" ">
+                <div v-if="$page.props.auth.user === null">
                     <Link href="/dashboard"><UserRound /></Link>
                 </div>
                 <div v-else class="flex items-center space-x-10">

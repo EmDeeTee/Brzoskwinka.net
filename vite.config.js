@@ -20,4 +20,9 @@ export default defineConfig({
         }),
         i18n()
     ],
+    resolve: {
+        dedupe: [
+            'vue'
+        ]
+    }
 });

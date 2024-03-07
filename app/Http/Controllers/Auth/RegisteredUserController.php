@@ -45,7 +45,6 @@ class RegisteredUserController extends Controller
         ]);
         
         Cart::create([
-            'products_count' => 0,
             'user_id' => $user->id,
             'product_ids' => []
         ]);
