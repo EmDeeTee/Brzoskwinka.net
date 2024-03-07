@@ -27,5 +27,5 @@
   <img src="./github-images/Capture6.PNG" width="600" />
 
 - Written in PHP, Laravel
-- Reactive Vue.js 3 frontend
+- Reactive Vue.js 3 frontend with Tailwind CSS
 - Seller dashboard
