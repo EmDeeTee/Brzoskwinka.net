@@ -22,6 +22,10 @@
   <img src="./github-images/Capture4.PNG" />
   
 - Image uploading and stylised listing description
+
+  <img src="./github-images/Capture5.PNG" width="600" />
+  <img src="./github-images/Capture6.PNG" width="600" />
+
 - Written in PHP, Laravel
 - Reactive Vue.js 3 frontend
 - Seller dashboard
