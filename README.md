@@ -14,3 +14,4 @@
 - Image uploading and stylised listing description
 - Written in PHP, Laravel
 - Reactive Vue.js 3 frontend
+- Seller dashboard
