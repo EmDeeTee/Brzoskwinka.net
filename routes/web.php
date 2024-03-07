@@ -29,6 +29,7 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/products/search/{params}', [ProductsController::class, 'search'])->name('products.search');
 Route::get('/products/add', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductsController::class, 'display'])->name('products.display');
 Route::get('/products', [ProductsController::class, 'store'])->name('products');

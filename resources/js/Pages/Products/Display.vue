@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import type { Product } from '@/types/index'
-import { Check, ShoppingCart, Truck } from 'lucide-vue-next';
+import { Check, HandCoins, Truck, Info } from 'lucide-vue-next';
 import { ref, type PropType } from 'vue'
 import { Link, router } from '@inertiajs/vue3';
 import { usePage } from '@inertiajs/vue3'
@@ -11,7 +11,6 @@ import { POSITION, TYPE, useToast } from 'vue-toastification';
 const page = usePage()
 const addedToCart = ref(false)
 const toast = useToast();
-// TODO: Show if the listing is posted by brzoskwinka or user
 interface Seller {
     id: Number,
     name: String
@@ -64,36 +63,25 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
 </script>
 
 <template>
-    <div class="flex flex-row py-16">
-        <div class="w-2/3 m-2 rounded-xl bg-white">
+    <div class="flex py-16 flex-col md:flex-row">
+        <div class="w-full md:w-2/3 m-2 rounded-xl bg-white">
             <div class="m-3">
                 <h1 class="font-bold text-2xl pb-2">{{ props.product?.name }}</h1>
 
                 <div class="flex justify-center">
-                    <img :src="props.product?.imgSrc" class="pb-3 size-64 flex"/>
+                    <img :src="props.product?.imgSrc" class="object-contain max-h-[600px] flex"/>
                 </div>
 
-                <!-- <p class="mt-10">
-                    Manufacturer: Dell <br />
-                    Model: Inspiron 1525  <br />
-                    CPU: Intel Pentium <br />
-                    MHz: 2130 <br />
-                    RAM: 4 GB <br />
-                </p> -->
-
                 <!-- NOTE: Isn't this a vector for an XSS attack? -->
-                <p class="mt-10 p-2" v-html="props.product?.description">
-                    
-                </p>
-
+                <p class="mt-10 p-2" v-html="props.product?.description"></p>
             </div>
             
         </div>
 
-        <div class="w-1/3 m-2 flex flex-col rounded-xl bg-white max-h-[22rem] md:max-h-[11rem]">
+        <div class="w-full md:w-1/3 m-2 flex flex-col rounded-xl bg-white h-fit">
             <div class="m-2">
                 <span class="font-light">{{$t('d.seller')}}: </span>
-                <span class="font-bold" v-if="props.seller === null">
+                <span v-tooltip="'This listing was posted by Brzoskwinka.Net'" class="font-bold" v-if="props.seller === null">
                     Brzoskwinka.Net
                 </span>
 
@@ -104,7 +92,7 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                 </span>
             </div>
 
-            <div class="border-t border-b font-bold p-3 md:flex sm:block">
+            <div class="border-t border-b font-bold p-3 sm:block lg:flex">
                 <div>
                     <h1 class="text-3xl">{{ props.product?.price }} PLN</h1>
                     <p class="font-light">
@@ -119,12 +107,12 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                     </p>
                 </div>
                 <div class="flex items-center mx-auto ">
-                    <button @click="addToCart(props.product?.id)" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-3 rounded-lg bg-[#ff503c] hover:opacity-70 w-40 md:w-56">
-                        <span class="flex flex-row" v-if="addedToCart">
+                    <button @click="addToCart(props.product?.id)" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-2 max-w-44 rounded-lg bg-[#ff503c] text-xl hover:opacity-70 md:w-56">
+                        <span class="flex flex-row space-x-2" v-if="addedToCart">
                             <div>
                                 {{ $t('d.added.to.cart') }}
                             </div>
-                            <div class="">
+                            <div class="mt-auto mb-auto">
                                 <Check />
                             </div>
                         </span>
@@ -135,10 +123,24 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                 </div>
             </div>
 
-            <div class="flex p-3 space-x-1">
-                <Truck />
-                <p>12,99 PLN</p>
+            <div class="flex space-y-2 p-3 flex-col">
+                <div class="justify-center flex space-x-1">
+                    <Info :size="20" :stroke-width="1.5" />
+                    <p>
+                        The costs below are not included in the price
+                    </p>
+                </div>
+                <div class="flex flex-row space-x-1">
+                    <Truck triggers="['hover']" v-tooltip="'Shipping cost'" />
+                    <p>12.99 PLN</p>
+                </div>
+                <div class="flex flex-row space-x-1">
+                    <HandCoins triggers="['hover']" v-tooltip="'Brzoskwinka.Net fee'" />
+                    <p>2.00 PLN</p>
+                </div>
+                
             </div>
+
         </div>
     </div>
 </template>

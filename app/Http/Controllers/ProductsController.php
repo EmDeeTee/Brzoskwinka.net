@@ -54,4 +54,8 @@ class ProductsController extends Controller {
             'products' => Product::all(),
         ]);
     }
+
+    public function search() {
+        dd(request()->params);
+    }
 }
