@@ -92,8 +92,8 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                 </span>
             </div>
 
-            <div class="border-t border-b font-bold p-3 flex">
-                <div class="mr-4">
+            <div class="border-t border-b font-bold p-3 flex justify-center">
+                <div class="mr-auto">
                     <h1 class="text-3xl">{{ props.product?.price }} PLN</h1>
                     <p class="font-light">
                         {{ props.product?.units }} 
@@ -106,8 +106,8 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                         {{$t('d.available')}}
                     </p>
                 </div>
-                <div class="flex items-center ">
-                    <button @click="addToCart(props.product?.id)" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-2 max-w-44 rounded-lg bg-[#ff503c] text-xl hover:opacity-70 md:w-56">
+                <div class="flex items-center">
+                    <button @click="addToCart(props.product?.id)" :class="{'bg-green-600 cursor-not-allowed': addedToCart}" class="text-white p-2 rounded-lg bg-[#ff503c] text-xl hover:opacity-70 md:w-40">
                         <span class="flex flex-row space-x-2" v-if="addedToCart">
                             <div>
                                 {{ $t('d.added.to.cart') }}
