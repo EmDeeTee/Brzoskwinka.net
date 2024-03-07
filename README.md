@@ -9,6 +9,10 @@
 
 # Brzoskwinka.Net
 - Multi-language support with i18n
+
+  <img src="./github-images/Capture2.PNG" width="600" />
+  <img src="./github-images/Capture3.PNG" width="600" />
+  
 - Official and user-made listings
   
   <img src="./github-images/Capture.PNG" width="600" />
