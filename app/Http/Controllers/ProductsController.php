@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -48,14 +49,49 @@ class ProductsController extends Controller {
         ]);
     }
 
-    // not this kind of store
-    public function store() {
+    public function showAllProducts($errorMsg = null) {
         return Inertia::render('Products/Products', [
             'products' => Product::all(),
+            'productsCount' => Product::count(),
+            'lastSearchQuery' => '',
+            'errorMsg' => $errorMsg,
         ]);
     }
+    
+    // not this kind of store
+    public function store() {
+        return $this->showAllProducts();
+    }
 
+    // TODO: Clean this code up. Merge Inertia render into one function
     public function search() {
-        dd(request()->params);
+        $query = request()->params;
+        if (str_starts_with($query, '!user=')) {
+            $userName = substr($query, strlen('!user='));
+            $user = User::firstWhere(['name' => $userName]);
+
+            if (!$user) {
+                return $this->showAllProducts('There are no products that match the search criteria');
+            }
+
+            $userId = $user->id;
+            $res = Product::where(['user_id' => $userId])->get();
+
+            return Inertia::render('Products/Products', [
+                'products' => $res,
+                'productsCount' => Product::count(),
+                'lastSearchQuery' => $query,
+                'errorMsg' => count($res) ? null : 'There are no products that match the search criteria',
+            ]);
+        }
+
+        $res = Product::where('name', 'LIKE', '%'.$query.'%')->get();
+
+        return Inertia::render('Products/Products', [
+            'products' => $res,
+            'productsCount' => Product::count(),
+            'lastSearchQuery' => $query,
+            'errorMsg' => count($res) ? null : 'There are no products that match the search criteria',
+        ]);
     }
 }

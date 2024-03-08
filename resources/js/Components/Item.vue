@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
     <div class="text-center pt-4 cursor-pointer hover:underline transition">
-        <Link :href="'products/' + product?.id">
+        <Link :href="route('products.display', product?.id)">
             <img :src="props.product?.imgSrc" class="pb-3 w-48 h-48"/>
             <span class="text-xl font-bold">
                 {{ props.product?.price }} PLN
