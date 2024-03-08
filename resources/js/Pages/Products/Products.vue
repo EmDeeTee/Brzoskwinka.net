@@ -5,13 +5,11 @@ import { Product } from '@/types/index'
 import { ref } from 'vue'
 import { Search } from 'lucide-vue-next';
 import { Link } from '@inertiajs/vue3';
-import { POSITION, TYPE, useToast } from 'vue-toastification';
 
 const searchQuery = ref<String>('')
-const toast = useToast()
 const props = defineProps<{
     products: Product[],
-    productsCount: number,
+    totalProductsCount: number, // Count of products in the entire database
     lastSearchQuery: string,
     errorMsg: string | null,
 }>()
@@ -36,7 +34,7 @@ function onSearch() {
             {{ props.errorMsg }}
         </div>
         <div class="flex justify-center ml-16 mr-16">
-            <input v-model="searchQuery" v-on:keyup.enter="onSearch()" class="min-w-[300px] rounded-l-xl md:min-w-full text-lg" type="text" :placeholder="`Search from ${props.productsCount} products`" />
+            <input v-model="searchQuery" v-on:keyup.enter="onSearch()" class="min-w-[300px] rounded-l-xl md:min-w-full text-lg" type="text" :placeholder="`Search from ${props.totalProductsCount} products`" />
             <div class="mt-auto mb-auto p-2 bg-orange-500 rounded-r-xl">
                 <button @click="onSearch()">
                     <Search :size="36" color="#ffffff" class="mt-1 transition hover:scale-[85%] hover:rotate-12 active:scale-[110%] active:rotate-[66deg]" />

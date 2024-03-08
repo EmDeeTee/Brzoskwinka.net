@@ -52,7 +52,7 @@ class ProductsController extends Controller {
     public function showAllProducts($errorMsg = null) {
         return Inertia::render('Products/Products', [
             'products' => Product::all(),
-            'productsCount' => Product::count(),
+            'totalProductsCount' => Product::count(),
             'lastSearchQuery' => '',
             'errorMsg' => $errorMsg,
         ]);
@@ -64,6 +64,7 @@ class ProductsController extends Controller {
     }
 
     // TODO: Clean this code up. Merge Inertia render into one function
+    // TODO: Write unit test for this
     public function search() {
         $query = request()->params;
         if (str_starts_with($query, '!user=')) {
@@ -71,7 +72,12 @@ class ProductsController extends Controller {
             $user = User::firstWhere(['name' => $userName]);
 
             if (!$user) {
-                return $this->showAllProducts('There are no products that match the search criteria');
+                return Inertia::render('Products/Products', [
+                    'products' => [],
+                    'totalProductsCount' => Product::count(),
+                    'lastSearchQuery' => $query,
+                    'errorMsg' => 'There are no products that match the search criteria',
+                ]);
             }
 
             $userId = $user->id;
@@ -79,7 +85,7 @@ class ProductsController extends Controller {
 
             return Inertia::render('Products/Products', [
                 'products' => $res,
-                'productsCount' => Product::count(),
+                'totalProductsCount' => Product::count(),
                 'lastSearchQuery' => $query,
                 'errorMsg' => count($res) ? null : 'There are no products that match the search criteria',
             ]);
@@ -89,7 +95,7 @@ class ProductsController extends Controller {
 
         return Inertia::render('Products/Products', [
             'products' => $res,
-            'productsCount' => Product::count(),
+            'totalProductsCount' => Product::count(),
             'lastSearchQuery' => $query,
             'errorMsg' => count($res) ? null : 'There are no products that match the search criteria',
         ]);
