@@ -9,6 +9,7 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('category_id');
             $table->integer('units');
             $table->string('name');
             $table->string('category');

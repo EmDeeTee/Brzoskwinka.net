@@ -17,7 +17,7 @@ const form = useForm({
     description: '',
     price: 1,
     units: 1,
-    category: 'other',
+    category: 1,
     imgSrc: null
 });
 
@@ -114,8 +114,8 @@ function onImageChange(event) {
             <InputLabel for="category" value="Category" />
 
             <select class="mt-1 block w-full" required id="category" v-model="form.category">
-                <option value="laptops">Laptops</option>
-                <option value="other">Other</option>
+                <option :value="2">Laptops</option>
+                <option :value="1">Other</option>
             </select>
 
             <InputError class="mt-2" :message="form.errors.category" />

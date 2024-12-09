@@ -29,3 +29,7 @@ export interface Product {
     imgSrc: string,
     id: number
 }
+
+export interface Category {
+    name: string
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -49,22 +50,22 @@ class ProductsController extends Controller {
         ]);
     }
 
-    public function showAllProducts($errorMsg = null) {
+    public function renderProducts($products = [], $lastQuery = '', $errorMsg = null, $category = null) {
         return Inertia::render('Products/Products', [
-            'products' => Product::all(),
+            'products' => $products,
             'totalProductsCount' => Product::count(),
-            'lastSearchQuery' => '',
+            'lastSearchQuery' => $lastQuery,
             'errorMsg' => $errorMsg,
+            'category' => $category,
+            'allCategories' => Category::all()->pluck('name'),
         ]);
     }
     
     // not this kind of store
     public function store() {
-        return $this->showAllProducts();
+        return $this->renderProducts(Product::all());
     }
 
-    // TODO: Clean this code up. Merge Inertia render into one function
-    // TODO: Write unit test for this
     public function search() {
         $query = request()->params;
         if (str_starts_with($query, '!user=')) {
@@ -72,32 +73,17 @@ class ProductsController extends Controller {
             $user = User::firstWhere(['name' => $userName]);
 
             if (!$user) {
-                return Inertia::render('Products/Products', [
-                    'products' => [],
-                    'totalProductsCount' => Product::count(),
-                    'lastSearchQuery' => $query,
-                    'errorMsg' => 'There are no products that match the search criteria',
-                ]);
+                return $this->renderProducts(errorMsg: 'There are no products that match the search criteria');
             }
 
             $userId = $user->id;
             $res = Product::where(['user_id' => $userId])->get();
 
-            return Inertia::render('Products/Products', [
-                'products' => $res,
-                'totalProductsCount' => Product::count(),
-                'lastSearchQuery' => $query,
-                'errorMsg' => count($res) ? null : 'There are no products that match the search criteria',
-            ]);
+            return $this->renderProducts($res, $query, count($res) ? null : 'There are no products that match the search criteria');
         }
 
         $res = Product::where('name', 'LIKE', '%'.$query.'%')->get();
 
-        return Inertia::render('Products/Products', [
-            'products' => $res,
-            'totalProductsCount' => Product::count(),
-            'lastSearchQuery' => $query,
-            'errorMsg' => count($res) ? null : 'There are no products that match the search criteria',
-        ]);
+        return $this->renderProducts($res, $query, count($res) ? null : 'There are no products that match the search criteria');
     }
 }
