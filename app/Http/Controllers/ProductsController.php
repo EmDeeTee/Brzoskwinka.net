@@ -30,7 +30,9 @@ class ProductsController extends Controller {
         $file = request()->file('imgSrc');
 
         $p = Product::create(array_merge($data, [
-            "user_id" => request()->user()->id
+            "user_id" => request()->user()->id,
+            // FIXME: Quick hack to get this shaite to work
+            "category_id" => 0
         ]));
 
         $fileExt = substr($file->getClientOriginalName(), -3);
@@ -60,7 +62,7 @@ class ProductsController extends Controller {
             'allCategories' => Category::all()->pluck('name'),
         ]);
     }
-    
+
     // not this kind of store
     public function store() {
         return $this->renderProducts(Product::all());
