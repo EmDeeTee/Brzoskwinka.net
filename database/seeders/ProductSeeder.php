@@ -15,22 +15,32 @@ class ProductSeeder extends Seeder {
         'price' => random_int(10, 112),
         'description' => 'Dell desc',
         'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
-        'user_id' => 1, //Papkin
+        'user_id' => 0,
         'category_id' => 1, //Laptops
         "category" => "laptops",
-        "units" => random_int(1, 6)
+        "units" => random_int(1, 6),
+        "attributes" => '
+            {
+                "hasCertificate": true
+            }
+        '
         ]);
         DB::table('products')->insert([
         'name' => 'Dell Inspiron 1526',
         'price' => random_int(10, 112),
         'description' => 'Dell desc',
         'imgSrc' => "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dell_Inspiron_1525_250618.jpg/220px-Dell_Inspiron_1525_250618.jpg",
-        'user_id' => 1, //Papkin
+        'user_id' => 0,
         'category_id' => 1, //Laptops
         "category" => "laptops",
-        "units" => random_int(1, 6)
+        "units" => random_int(1, 6),
+        "attributes" => '
+            {
+                "hasCertificate": false
+            }
+        '
         ]);
-        
+
         //Product::factory()->count(10)->create();
     }
 }

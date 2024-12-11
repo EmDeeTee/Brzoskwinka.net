@@ -16,12 +16,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void {
         DB::table('users')->insert([
-            'name' => 'Papkin',
+            'name' => 'admin',
             'email' => 'abc@abc.com',
             'password' => Hash::make('12345678'),
+            'id' => 0,
         ]);
         Cart::create([
-            'user_id' => 1,
+            'user_id' => 0,
             'product_ids' => []
         ]);
 

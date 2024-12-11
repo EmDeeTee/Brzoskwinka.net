@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->text('description');
             $table->float('price');
             $table->string('imgSrc');
+            $table->json('attributes');
             $table->timestamps();
 
         });

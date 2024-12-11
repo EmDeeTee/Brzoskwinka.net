@@ -84,4 +84,8 @@ class User extends Authenticatable
     public function cart(): HasOne {
         return $this->hasOne(Cart::class);
     }
+
+    public function is_admin(): bool {
+        return $this->id === 0;
+    }
 }

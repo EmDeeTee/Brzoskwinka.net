@@ -24,8 +24,10 @@ class ProductsController extends Controller {
             "price" => "required|min:1|numeric|sometimes",
             "imgSrc" => "required",
             "units" => "required|min:1|numeric|sometimes",
-            "category" => "required"
+            "category" => "required",
+            "attributes" => "required",
         ]);
+        $data['attributes'] = json_encode($data['attributes']);
 
         $file = request()->file('imgSrc');
 

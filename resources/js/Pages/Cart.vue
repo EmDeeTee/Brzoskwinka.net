@@ -34,7 +34,7 @@ props.products!.forEach(element => {
                         {{ $t('cart.checkout') }}
                     </p>
                 </button>
-    
+
                 <div class="space-x-4">
                     <span class="font-bold">{{ $t('cart.total') }}: </span>
                     <span>{{ totalPrice.toFixed(2) }} PLN</span>

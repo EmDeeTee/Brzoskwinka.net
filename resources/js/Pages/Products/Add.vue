@@ -18,7 +18,10 @@ const form = useForm({
     price: 1,
     units: 1,
     category: 1,
-    imgSrc: null
+    imgSrc: null,
+    attributes: {
+        "hasCertificate": false,
+    },
 });
 
 const submit = () => {
@@ -65,16 +68,16 @@ function onImageChange(event) {
         <div>
             <InputLabel for="description" value="Description" />
 
-            <textarea 
+            <textarea
                 id="description"
                 type="text"
                 class="mt-1 block w-full"
                 v-model="form.description"
                 required
-            > 
-                
+            >
+
             </textarea>
-                
+
 
             <InputError class="mt-2" :message="form.errors.description" />
         </div>
@@ -121,14 +124,26 @@ function onImageChange(event) {
             <InputError class="mt-2" :message="form.errors.category" />
         </div>
 
+        <div class="flex space-x-2 items-center" v-if="$page.props.auth.isUserAdmin === true">
+            <input class="cursor-pointer" type="checkbox" name="cert" v-model="form.data().attributes.hasCertificate">
+            <InputLabel for="attributes" value="Certificate" />
+            <!-- TODO: This could be a component -->
+            <div v-tooltip="'This option is available because you are an admin'" class="bg-red-400 rounded-lg p-1 select-none">
+                <p class="font-semibold">ADMIN OPTION</p>
+            </div>
+
+
+            <InputError class="mt-2" :message="form.errors.category" />
+        </div>
+
         <div>
             <InputLabel value="Image" />
 
-            <picture-input 
+            <picture-input
                 ref="imageInput"
-                width="600" 
-                height="600" 
-                accept="image/jpeg,image/png" 
+                width="600"
+                height="600"
+                accept="image/jpeg,image/png"
                 @change="onImageChange">
             </picture-input>
         </div>

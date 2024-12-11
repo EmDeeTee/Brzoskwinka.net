@@ -46,7 +46,8 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
-                'cart' => $this->getCartIfAvailable($request->user())
+                'cart' => $this->getCartIfAvailable($request->user()),
+                'isUserAdmin' => ($request->user() ? $request->user()->is_admin() : false),
             ]
         ];
     }

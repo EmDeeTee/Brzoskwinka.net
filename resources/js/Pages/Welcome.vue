@@ -10,8 +10,7 @@ const props = defineProps<{
     canRegister?: boolean;
     laravelVersion: string;
     phpVersion: string;
-    peachImg: string;
-}>(); //:src="props.peachImg"
+}>();
 </script>
 
 <template>

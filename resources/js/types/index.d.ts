@@ -19,6 +19,10 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     };
 };
 
+export interface Attributes {
+    hasCertificate: number,
+}
+
 export interface Product {
     name: string,
     price: number,
@@ -27,7 +31,8 @@ export interface Product {
     units: number,
     category: string,
     imgSrc: string,
-    id: number
+    id: number,
+    attributes: Attributes,
 }
 
 export interface Category {
