@@ -67,12 +67,14 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
     <div class="flex justify-center py-16 flex-col md:flex-row">
         <InfoBox class="w-full md:w-2/3 m-2 rounded-xl bg-white">
             <div class="m-3">
-                <h1 class="font-bold text-2xl pb-2">{{ props.product?.name }}</h1>
+                <div class="flex sm:flex-row flex-col items-center">
+                    <h1 class="font-bold text-2xl">{{ props.product?.name }}</h1>
+                    <div class="bg-orange-200 p-1 ml-3 rounded-xl" v-if="attrs.hasCertificate == 1">
+                        <p class="font-semibold text-center">Expert Recommends</p>
+                    </div>
+                </div>
 
-                <div class="flex justify-center">
-<!--
-                    <img :src="props.product?.imgSrc" class="object-contain max-h-[600px] flex"/>
--->
+                <div class="flex justify-center pt-2">
                     <img :src="props.product?.imgSrc" @click="() => alert(props.product.imgSrc)" class="h-full"/>
                 </div>
 
@@ -131,7 +133,7 @@ if (page.props.auth.cart !== null && page.props.auth.cart.product_ids.includes(p
                 <div class="flex space-y-2 p-3 flex-col">
                     <div class="justify-center items-center flex space-x-1">
                         <Info :size="20" :stroke-width="1.5" />
-                        <p>
+                        <p class="text-sm ">
                             The costs below are not included in the price
                         </p>
                     </div>
